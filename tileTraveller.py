@@ -1,1 +1,1 @@
-print("hello")
+print("I stole my student's seat"
