@@ -1,1 +1,7 @@
-print("I stole my student's seat"
+"""
+heyt 
+harold yes 
+sir
+"""
+
+print("Hello world")
