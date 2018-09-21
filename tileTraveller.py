@@ -1,3 +1,4 @@
+#List of blocks where w is Wall, and e is Exit
 bottomleft = "weww"
 middleleft = "weee"
 topleft = "wwee"
@@ -9,6 +10,7 @@ middleright = "wewe"
 topright = "ewwe"
 
 def newDirectionFunc(input_dir,x,y):
+    #Move from your current block to your new block
 
     if input_dir == "N":
         y = y + 1
@@ -26,7 +28,9 @@ def newDirectionFunc(input_dir,x,y):
         return x,y   
 
 def findyourBlock(x,y):
-    finish = 1
+    #Locating your new block
+
+    Victory = 0
     if x == 1 and y == 1:
         yourBlock = bottomleft
     elif x == 1 and y == 2:
@@ -42,21 +46,23 @@ def findyourBlock(x,y):
     elif x == 3 and y == 1:
         yourBlock = bottomright
         print("Victory!")
-        finish = 0
+        Victory = 1
               
     elif x == 3 and y == 2:
         yourBlock = middleright
     elif x == 3 and y == 3:
         yourBlock = topright
-    return yourBlock,finish
+    return yourBlock,Victory
+
 def youcantravel(yourBlock):
+    #Clean slate/refresh your option variables
     allowed = ""
     option1 = ""
     option2 = ""
     option3 = ""
     option4 = ""
 
-    #youcantravel
+    #Here you find the allowed directions you can travel, by checking walls and exits, then print them.
     for index,option in enumerate(yourBlock):
         if option == "e":
             if index == 0:
@@ -77,7 +83,7 @@ def youcantravel(yourBlock):
     return directionoptions, allowed      
 
 def main():
-    
+    #Main function's starting variables
     yourBlock = ""
     allowed = "N"
     print("You can travel: (N)orth.")
@@ -88,14 +94,15 @@ def main():
 
     while True:
                
-        while input_dir in allowed:
+        while input_dir in allowed: #Checking for "allowed" movements
     
-            a,b = (newDirectionFunc(input_dir,x,y))
-            yourBlock,z = findyourBlock(a,b)
-            x,y = a,b
+            new_x,new_y = (newDirectionFunc(input_dir,x,y))
+            yourBlock,youWin = findyourBlock(new_x,new_y)
+            x,y = new_x,new_y
             dirop,allowed = youcantravel(yourBlock)
-            if z == 0:
+            if youWin == 1:
                 return False
+                #end the program for winning
             print("You can travel:", dirop)
             input_dir = str(input("Direction: "))
             input_dir = input_dir.upper()

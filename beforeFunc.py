@@ -1,4 +1,4 @@
-
+#List of blocks where w is Wall, and e is Exit
 bottomleft = "weww"
 middleleft = "weee"
 topleft = "wwee"
@@ -9,27 +9,21 @@ bottomright = "weww"
 middleright = "wewe"
 topright = "ewwe"
 
+#Starting variables
 yourBlock = ""
-
-
 x = 1
 y = 1
+allowed = "N"
+Victory = 0
 
-
-start = bottomleft
 print("You can travel: (N)orth.")
 input_dir = str(input("Direction: "))
 input_dir = input_dir.upper()
 
-
-
-
-allowed = "N"
-z = 1
-
-while z == 1:
-    while 0 < x < 4 and 0 < y < 4 and input_dir in allowed:
+while Victory == 0:
+    while 0 < x < 4 and 0 < y < 4 and input_dir in allowed:#Checking for "allowed" movements
     
+    #Moving from your current block to your new block
         if input_dir == "N":
             y = y + 1
         elif input_dir == "S":
@@ -40,7 +34,7 @@ while z == 1:
             x = x - 1
 
 
-
+    #Locating your new block
         if x == 1 and y == 1:
             yourBlock = bottomleft
         elif x == 1 and y == 2:
@@ -55,21 +49,21 @@ while z == 1:
             yourBlock = topcenter
         elif x == 3 and y == 1:
             print("Victory!")
-            z = 0
+            Victory = 1
             break
         elif x == 3 and y == 2:
             yourBlock = middleright
         elif x == 3 and y == 3:
             yourBlock = topright
         
-
+    #Clean slate/refresh your option variables
         allowed = ""
         option1 = ""
         option2 = ""
         option3 = ""
         option4 = ""
 
-        
+        #Here you find the allowed directions you can travel, by checking walls and exits, then print them.
         for index,option in enumerate(yourBlock):
             if option == "e":
                 if index == 0:
