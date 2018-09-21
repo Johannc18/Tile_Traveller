@@ -71,7 +71,7 @@ def youcantravel(yourBlock):
             elif index == 3:
                 option4 += "(S)outh "
                 allowed += "S"
-    directionoptions = option1 + option2 + option3 + option4 + "."
+    directionoptions = option2 + option3 + option4 + option1 + "."
     directionoptions = directionoptions.replace(" ", " or ")
     directionoptions = directionoptions.replace(" or .",".")
     return directionoptions, allowed      
@@ -80,7 +80,7 @@ def main():
     
     yourBlock = ""
     allowed = "N"
-    print("You can travel (N)orth.")
+    print("You can travel: (N)orth.")
     input_dir = str(input("Direction: "))
     input_dir = input_dir.upper()
     x = 1
@@ -96,7 +96,7 @@ def main():
             dirop,allowed = youcantravel(yourBlock)
             if z == 0:
                 return False
-            print("You can travel: ", dirop)
+            print("You can travel:", dirop)
             input_dir = str(input("Direction: "))
             input_dir = input_dir.upper()
                             

@@ -17,7 +17,7 @@ y = 1
 
 
 start = bottomleft
-print("You can travel (N)orth.")
+print("You can travel: (N)orth.")
 input_dir = str(input("Direction: "))
 input_dir = input_dir.upper()
 
@@ -84,11 +84,11 @@ while z == 1:
                 elif index == 3:
                     option4 += "(S)outh "
                     allowed += "S"
-        directionoptions = option1 + option2 + option3 + option4 + "."
+        directionoptions = option2 + option3 + option4 + option1 + "."
         directionoptions = directionoptions.replace(" ", " or ")
         directionoptions = directionoptions.replace(" or .",".")
 
-        print("You can travel: ", directionoptions)
+        print("You can travel:", directionoptions)
         input_dir = str(input("Direction: "))
         input_dir = input_dir.upper()        
     
